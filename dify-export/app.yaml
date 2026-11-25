@@ -1,0 +1,754 @@
+app:
+  description: 'Customer support agent for Nimbus Coffee Co. (fictional): answers
+    from a FAQ knowledge base and looks up order status through an HTTP tool.'
+  icon: ☕
+  icon_background: '#E4FBCC'
+  icon_type: emoji
+  mode: advanced-chat
+  name: Nimbus Support
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.9.16@bf6898c7c0808724ac91f8524795b2e1c64e70520f3ba25260c0b3f185839990
+    version: null
+kind: app
+site:
+  chat_color_theme: null
+  chat_color_theme_inverted: false
+  copyright: null
+  custom_disclaimer: ''
+  default_language: en-US
+  description: null
+  icon: ☕
+  icon_background: '#E4FBCC'
+  icon_type: emoji
+  input_placeholder: null
+  privacy_policy: null
+  show_workflow_steps: true
+  title: Nimbus Support
+  use_icon_as_answer_icon: false
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: Hi! I'm the Nimbus Coffee assistant. Ask me about shipping,
+      returns, or subscriptions, or give me your order number (like NMB-1042).
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - What's your return policy on unopened bags?
+    - Where is order NMB-1042?
+    - Can I pause my subscription?
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: start-source-classifier
+      source: start
+      sourceHandle: source
+      target: classifier
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: classifier-1-kr
+      source: classifier
+      sourceHandle: '1'
+      target: kr
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: kr-source-llm_faq
+      source: kr
+      sourceHandle: source
+      target: llm_faq
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: llm_faq-source-answer_faq
+      source: llm_faq
+      sourceHandle: source
+      target: answer_faq
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: parameter-extractor
+      id: classifier-2-extract
+      source: classifier
+      sourceHandle: '2'
+      target: extract
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: http-request
+      id: extract-source-http
+      source: extract
+      sourceHandle: source
+      target: http
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: if-else
+      id: http-source-found
+      source: http
+      sourceHandle: source
+      target: found
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: found-true-llm_order
+      source: found
+      sourceHandle: 'true'
+      target: llm_order
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: llm_order-source-answer_order
+      source: llm_order
+      sourceHandle: source
+      target: answer_order
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: found-false-answer_notfound
+      source: found
+      sourceHandle: 'false'
+      target: answer_notfound
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: answer
+      id: classifier-3-answer_other
+      source: classifier
+      sourceHandle: '3'
+      target: answer_other
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: llm_faq-fail-branch-llm_faq_backup
+      source: llm_faq
+      sourceHandle: fail-branch
+      target: llm_faq_backup
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: llm_faq_backup-source-answer_faq_backup
+      source: llm_faq_backup
+      sourceHandle: source
+      target: answer_faq_backup
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: llm_order-fail-branch-llm_order_backup
+      source: llm_order
+      sourceHandle: fail-branch
+      target: llm_order_backup
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: llm_order_backup-source-answer_order_backup
+      source: llm_order_backup
+      sourceHandle: source
+      target: answer_order_backup
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: User Input
+        type: start
+        variables: []
+      height: 90
+      id: start
+      position:
+        x: 30
+        y: 300
+      positionAbsolute:
+        x: 30
+        y: 300
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          label: FAQ
+          name: 'Questions about Nimbus policies or products: shipping, returns, refunds,
+            damaged bags, subscriptions, tasting room hours, decaf, allergens, wholesale.'
+        - id: '2'
+          label: Order status
+          name: The customer asks where an order is, the status of an order, or gives
+            an order number like NMB-1042.
+        - id: '3'
+          label: Other
+          name: Anything else that is not about Nimbus Coffee orders or policies,
+            for example weather, news, or general chit-chat.
+        desc: ''
+        instruction: Pick exactly one class. If the message contains an order number
+          (NMB- plus digits) choose Order status.
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: gemini-3.5-flash-lite
+          provider: langgenius/gemini/google
+        query_variable_selector:
+        - sys
+        - query
+        selected: false
+        title: Question Classifier
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 90
+      id: classifier
+      position:
+        x: 330
+        y: 300
+      positionAbsolute:
+        x: 330
+        y: 300
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - zxerrJKpd6dB5RXqFHZ0D34jSdyOv3tS85MyTDwIvhDE91rna5ZxMOfP6edtZuge
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          score_threshold: null
+          top_k: 3
+        query_variable_selector:
+        - sys
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 90
+      id: kr
+      position:
+        x: 680
+        y: 120
+      positionAbsolute:
+        x: 680
+        y: 120
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - kr
+          - result
+        desc: ''
+        error_strategy: fail-branch
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: gemini-4-hydrogen
+          provider: langgenius/gemini/google
+        prompt_template:
+        - role: system
+          text: 'You are the friendly support assistant for Nimbus Coffee Co., a coffee
+            roaster.
+
+            Answer ONLY from the FAQ context below. Keep replies to 2-4 short sentences.
+
+            If the context does not contain the answer, say you don''t have that information
+            and suggest emailing support@nimbus-coffee.example.
+
+            Never invent refunds, dates, discounts, or tracking numbers. Never ask
+            for card details or passwords.
+
+
+            FAQ context:
+
+            {{#context#}}'
+        - role: user
+          text: '{{#sys.query#}}'
+        retry_config:
+          enabled: true
+          max_retries: 1
+          retry_interval: 2000
+        selected: false
+        title: Answer from FAQ
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: llm_faq
+      position:
+        x: 1000
+        y: 120
+      positionAbsolute:
+        x: 1000
+        y: 120
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm_faq.text#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 90
+      id: answer_faq
+      position:
+        x: 1320
+        y: 120
+      positionAbsolute:
+        x: 1320
+        y: 120
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        instruction: Extract only the order number. Do not guess one.
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: gemini-3.5-flash-lite
+          provider: langgenius/gemini/google
+        parameters:
+        - description: The Nimbus order number in the form NMB- followed by four digits,
+            upper case, e.g. NMB-1042. Empty string if none is given.
+          name: order_id
+          required: false
+          type: string
+        query:
+        - sys
+        - query
+        reasoning_mode: prompt
+        selected: false
+        title: Get Order Number
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 90
+      id: extract
+      position:
+        x: 680
+        y: 320
+      positionAbsolute:
+        x: 680
+        y: 320
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        desc: ''
+        headers: ''
+        method: get
+        params: ''
+        retry_config:
+          enabled: false
+          max_retries: 1
+          retry_interval: 1000
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 10
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 30
+          write: 30
+        title: Order Status API
+        type: http-request
+        url: http://nimbus-mock-api:8000/orders/{{#extract.order_id#}}
+      height: 90
+      id: http
+      position:
+        x: 1000
+        y: 320
+      positionAbsolute:
+        x: 1000
+        y: 320
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '='
+            id: c1
+            value: '200'
+            varType: number
+            variable_selector:
+            - http
+            - status_code
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: Order found?
+        type: if-else
+      height: 90
+      id: found
+      position:
+        x: 1320
+        y: 320
+      positionAbsolute:
+        x: 1320
+        y: 320
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        error_strategy: fail-branch
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: gemini-4-hydrogen
+          provider: langgenius/gemini/google
+        prompt_template:
+        - role: system
+          text: 'You are the friendly support assistant for Nimbus Coffee Co.
+
+            Turn the order record below into a short, friendly reply of 2-3 sentences.
+
+            Use ONLY the fields in the JSON. If delivered_on is null, do not give
+            a delivery date. Never invent dates, refunds, or tracking numbers.
+
+
+            Order record (JSON):
+
+            {{#http.body#}}'
+        - role: user
+          text: '{{#sys.query#}}'
+        retry_config:
+          enabled: true
+          max_retries: 1
+          retry_interval: 2000
+        selected: false
+        title: Explain Order Status
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: llm_order
+      position:
+        x: 1640
+        y: 250
+      positionAbsolute:
+        x: 1640
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm_order.text#}}'
+        desc: ''
+        selected: false
+        title: Answer (order)
+        type: answer
+        variables: []
+      height: 90
+      id: answer_order
+      position:
+        x: 1960
+        y: 250
+      positionAbsolute:
+        x: 1960
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: I couldn't find an order with that number. Please check it (Nimbus
+          order numbers look like NMB-1042) or email support@nimbus-coffee.example
+          and we'll help.
+        desc: ''
+        selected: false
+        title: Answer (not found)
+        type: answer
+        variables: []
+      height: 90
+      id: answer_notfound
+      position:
+        x: 1640
+        y: 420
+      positionAbsolute:
+        x: 1640
+        y: 420
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Sorry, I can only help with Nimbus Coffee orders and our FAQ: shipping,
+          returns, subscriptions, or the status of an order like NMB-1042.'
+        desc: ''
+        selected: false
+        title: Answer (other)
+        type: answer
+        variables: []
+      height: 90
+      id: answer_other
+      position:
+        x: 680
+        y: 520
+      positionAbsolute:
+        x: 680
+        y: 520
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - kr
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: gemini-3.5-flash-lite
+          provider: langgenius/gemini/google
+        prompt_template:
+        - role: system
+          text: 'You are the friendly support assistant for Nimbus Coffee Co., a coffee
+            roaster.
+
+            Answer ONLY from the FAQ context below. Keep replies to 2-4 short sentences.
+
+            If the context does not contain the answer, say you don''t have that information
+            and suggest emailing support@nimbus-coffee.example.
+
+            Never invent refunds, dates, discounts, or tracking numbers. Never ask
+            for card details or passwords.
+
+
+            FAQ context:
+
+            {{#context#}}'
+        - role: user
+          text: '{{#sys.query#}}'
+        retry_config:
+          enabled: true
+          max_retries: 2
+          retry_interval: 3000
+        selected: false
+        title: Answer from FAQ (free backup model)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: llm_faq_backup
+      position:
+        x: 1000
+        y: -60
+      positionAbsolute:
+        x: 1000
+        y: -60
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm_faq_backup.text#}}'
+        desc: ''
+        selected: false
+        title: Answer (backup)
+        type: answer
+        variables: []
+      height: 90
+      id: answer_faq_backup
+      position:
+        x: 1320
+        y: -60
+      positionAbsolute:
+        x: 1320
+        y: -60
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: gemini-3.5-flash-lite
+          provider: langgenius/gemini/google
+        prompt_template:
+        - role: system
+          text: 'You are the friendly support assistant for Nimbus Coffee Co.
+
+            Turn the order record below into a short, friendly reply of 2-3 sentences.
+
+            Use ONLY the fields in the JSON. If delivered_on is null, do not give
+            a delivery date. Never invent dates, refunds, or tracking numbers.
+
+
+            Order record (JSON):
+
+            {{#http.body#}}'
+        - role: user
+          text: '{{#sys.query#}}'
+        retry_config:
+          enabled: true
+          max_retries: 2
+          retry_interval: 3000
+        selected: false
+        title: Explain Order Status (free backup model)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: llm_order_backup
+      position:
+        x: 1960
+        y: 80
+      positionAbsolute:
+        x: 1960
+        y: 80
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm_order_backup.text#}}'
+        desc: ''
+        selected: false
+        title: Answer (backup)
+        type: answer
+        variables: []
+      height: 90
+      id: answer_order_backup
+      position:
+        x: 2280
+        y: 80
+      positionAbsolute:
+        x: 2280
+        y: 80
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+  rag_pipeline_variables: []

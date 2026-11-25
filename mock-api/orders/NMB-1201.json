@@ -1,0 +1,11 @@
+{
+  "order_id": "NMB-1201",
+  "status": "delayed",
+  "roasted_on": "2026-11-20",
+  "shipped_on": "2026-11-21",
+  "delivered_on": null,
+  "carrier": "Nimbus Demo Carrier",
+  "items": "1 x 12 oz Ethiopia Guji",
+  "note": "Weather delay in the carrier network. No new delivery date yet.",
+  "fictional": true
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "question": "What's your return policy on unopened bags?",
+    "answer": "Unopened bags can be returned within 14 days of delivery for a full refund or a replacement! To start a return, please email support@nimbus-coffee.example with your order number. Once we receive the bag, your refund will be sent back to your original payment method within 5–7 business days.",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Knowledge Retrieval",
+      "Answer from FAQ",
+      "Answer"
+    ],
+    "error": null,
+    "elapsed_s": 11.83,
+    "total_tokens": 1877,
+    "status": "succeeded"
+  },
+  {
+    "question": "How long does US shipping take?",
+    "answer": "",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Knowledge Retrieval",
+      "Answer from FAQ"
+    ],
+    "error": [
+      "Answer from FAQ",
+      "[gemini] This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later."
+    ],
+    "elapsed_s": 4.53,
+    "total_tokens": 989,
+    "status": "failed"
+  },
+  {
+    "question": "Can I pause my coffee subscription?",
+    "answer": "",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Knowledge Retrieval",
+      "Answer from FAQ"
+    ],
+    "error": [
+      "Answer from FAQ",
+      "[gemini] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-4-hydrogen, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\nPlease retry in 23h15m27.803569257s."
+    ],
+    "elapsed_s": 1.05,
+    "total_tokens": 989,
+    "status": "failed"
+  }
+]

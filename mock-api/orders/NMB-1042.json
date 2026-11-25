@@ -1,0 +1,11 @@
+{
+  "order_id": "NMB-1042",
+  "status": "in_transit",
+  "roasted_on": "2026-11-18",
+  "shipped_on": "2026-11-19",
+  "delivered_on": null,
+  "carrier": "Nimbus Demo Carrier",
+  "items": "2 x 12 oz House Blend",
+  "note": "Handed to the carrier. Expected 3-5 business days after roasting.",
+  "fictional": true
+}
