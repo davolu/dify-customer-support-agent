@@ -1,0 +1,11 @@
+{
+  "order_id": "NMB-1188",
+  "status": "delivered",
+  "roasted_on": "2026-11-06",
+  "shipped_on": "2026-11-07",
+  "delivered_on": "2026-11-12",
+  "carrier": "Nimbus Demo Carrier",
+  "items": "1 x 12 oz Night Owl Decaf",
+  "note": "Delivered to the front door.",
+  "fictional": true
+}

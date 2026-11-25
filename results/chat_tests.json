@@ -1,0 +1,144 @@
+[
+  {
+    "question": "What's your return policy on unopened bags?",
+    "answer": "Unopened bags can be returned within 14 days of delivery for a full refund or a replacement. To start a return, just email us at support@nimbus-coffee.example with your order number.",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Knowledge Retrieval",
+      "Answer from FAQ",
+      "Answer from FAQ (free backup model)",
+      "Answer (backup)"
+    ],
+    "error": [
+      "Answer from FAQ",
+      "Unknown error"
+    ],
+    "elapsed_s": 8.71,
+    "total_tokens": 1424,
+    "status": "partial-succeeded",
+    "answered_by": "gemini-3.5-flash-lite (fallback)",
+    "answered": true
+  },
+  {
+    "question": "How long does US shipping take?",
+    "answer": "US orders are roasted within 1 business day and arrive in 3 to 5 business days after roasting. We ship to the US only!",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Knowledge Retrieval",
+      "Answer from FAQ",
+      "Answer from FAQ (free backup model)",
+      "Answer (backup)"
+    ],
+    "error": [
+      "Answer from FAQ",
+      "Unknown error"
+    ],
+    "elapsed_s": 8.49,
+    "total_tokens": 1381,
+    "status": "partial-succeeded",
+    "answered_by": "gemini-3.5-flash-lite (fallback)",
+    "answered": true
+  },
+  {
+    "question": "Can I pause my coffee subscription?",
+    "answer": "Yes, you can pause your subscription at any time before your next roast date. Please make this change directly through your Nimbus account page, as our support assistant cannot change subscriptions for you.",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Knowledge Retrieval",
+      "Answer from FAQ",
+      "Answer from FAQ (free backup model)",
+      "Answer (backup)"
+    ],
+    "error": [
+      "Answer from FAQ",
+      "Unknown error"
+    ],
+    "elapsed_s": 2.07,
+    "total_tokens": 1410,
+    "status": "partial-succeeded",
+    "answered_by": "gemini-3.5-flash-lite (fallback)",
+    "answered": true
+  },
+  {
+    "question": "Where is order NMB-1042?",
+    "answer": "Hey there! Your order NMB-1042 (2 x 12 oz House Blend) was roasted on November 18, 2026, and shipped via Nimbus Demo Carrier on November 19, 2026. It is currently in transit, and it's expected to arrive 3-5 business days after roasting!",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Get Order Number",
+      "Order Status API [HTTP 200]",
+      "Order found?",
+      "Explain Order Status",
+      "Explain Order Status (free backup model)",
+      "Answer (backup)"
+    ],
+    "error": [
+      "Explain Order Status",
+      "Unknown error"
+    ],
+    "elapsed_s": 6.32,
+    "total_tokens": 1799,
+    "status": "partial-succeeded",
+    "answered_by": "gemini-3.5-flash-lite (fallback)",
+    "answered": true
+  },
+  {
+    "question": "What's the status of NMB-1188?",
+    "answer": "Hi there! Your order NMB-1188 for 1 x 12 oz Night Owl Decaf has been delivered. It was delivered on 2026-11-12, and the note on your delivery says: \"Delivered to the front door.\" Enjoy your coffee!",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Get Order Number",
+      "Order Status API [HTTP 200]",
+      "Order found?",
+      "Explain Order Status",
+      "Explain Order Status (free backup model)",
+      "Answer (backup)"
+    ],
+    "error": [
+      "Explain Order Status",
+      "Unknown error"
+    ],
+    "elapsed_s": 9.22,
+    "total_tokens": 1805,
+    "status": "partial-succeeded",
+    "answered_by": "gemini-3.5-flash-lite (fallback)",
+    "answered": true
+  },
+  {
+    "question": "Where is order NMB-0000?",
+    "answer": "I couldn't find an order with that number. Please check it (Nimbus order numbers look like NMB-1042) or email support@nimbus-coffee.example and we'll help.",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Get Order Number",
+      "Order Status API [HTTP 404]",
+      "Order found?",
+      "Answer (not found)"
+    ],
+    "error": null,
+    "elapsed_s": 1.8,
+    "total_tokens": 1528,
+    "status": "succeeded",
+    "answered_by": "none (fixed reply)",
+    "answered": true
+  },
+  {
+    "question": "What's the weather in Lagos?",
+    "answer": "Sorry, I can only help with Nimbus Coffee orders and our FAQ: shipping, returns, subscriptions, or the status of an order like NMB-1042.",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Answer (other)"
+    ],
+    "error": null,
+    "elapsed_s": 0.94,
+    "total_tokens": 1002,
+    "status": "succeeded",
+    "answered_by": "none (fixed reply)",
+    "answered": true
+  }
+]

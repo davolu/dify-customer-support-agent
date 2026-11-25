@@ -1,0 +1,13 @@
+# Runs the mock order API on Dify's SSRF-proxy network so a self-hosted Dify can call it
+# at http://nimbus-mock-api:8000/orders/<ORDER_ID>.
+# Start Dify first (it creates the network), then: docker compose up -d --build
+services:
+  nimbus-mock-api:
+    build: .
+    container_name: nimbus-mock-api
+    restart: unless-stopped
+    networks: [ssrf]
+networks:
+  ssrf:
+    external: true
+    name: docker_ssrf_proxy_network

@@ -1,0 +1,36 @@
+[
+  {
+    "query": "What's your return policy on unopened bags?",
+    "top": [
+      {
+        "score": 0.7493,
+        "text": "Returns and refunds\n- Unopened bags can be returned within 14 days of delivery for a full refund or a replacement.\n- Opened bags cannot be returned, unless the bag arrived damaged (see below).\n- To start a return, email support@nimbus-coffee.example with your order number.\n- Refunds go back to the original payment method within 5\u20137 business days after we receive the bag.\n- We cannot issue same-day refunds."
+      },
+      {
+        "score": 0.7361,
+        "text": "Damaged, wrong, or missing bags\n- If a bag arrives torn, crushed, or wrong, take a photo and email support@nimbus-coffee.example within 7 days of delivery.\n- We send a free replacement. You do not need to return the damaged bag.\n- If tracking says \"delivered\" but you have no package, wait 1 business day, then email us and we will open a carrier claim."
+      },
+      {
+        "score": 0.6629,
+        "text": "Subscriptions\n- A subscription ships one or two bags every 2 or 4 weeks.\n- You can skip, pause, or cancel any time before your next roast date. Your roast date is shown in your Nimbus account.\n- Changes made after the roast date apply to the following shipment.\n- Our support assistant cannot change subscriptions for you. Please use your Nimbus account page."
+      }
+    ]
+  },
+  {
+    "query": "How long does US shipping take?",
+    "top": [
+      {
+        "score": 0.7294,
+        "text": "Shipping\n- We roast your coffee within 1 business day of your order, then ship it.\n- US orders arrive in 3\u20135 business days after roasting.\n- We ship to the US only. We do not ship internationally.\n- Every order gets a tracking update when it leaves the roastery.\n- Shipping is free on US orders of $40 or more. Orders under $40 pay a flat $6 shipping fee."
+      },
+      {
+        "score": 0.6343,
+        "text": "Subscriptions\n- A subscription ships one or two bags every 2 or 4 weeks.\n- You can skip, pause, or cancel any time before your next roast date. Your roast date is shown in your Nimbus account.\n- Changes made after the roast date apply to the following shipment.\n- Our support assistant cannot change subscriptions for you. Please use your Nimbus account page."
+      },
+      {
+        "score": 0.6281,
+        "text": "Damaged, wrong, or missing bags\n- If a bag arrives torn, crushed, or wrong, take a photo and email support@nimbus-coffee.example within 7 days of delivery.\n- We send a free replacement. You do not need to return the damaged bag.\n- If tracking says \"delivered\" but you have no package, wait 1 business day, then email us and we will open a carrier claim."
+      }
+    ]
+  }
+]

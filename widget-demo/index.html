@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nimbus Coffee Co. (demo shop)</title>
+<style>
+  :root { --ink:#1f2a37; --green:#2f6b3f; --cream:#f7f3ec; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--cream); }
+  header { display:flex; justify-content:space-between; align-items:center; padding:22px 48px; background:#fff; border-bottom:1px solid #e7e1d6; }
+  .logo { font-weight:800; font-size:24px; letter-spacing:.5px; } .logo span { color:var(--green); }
+  nav a { margin-left:28px; color:var(--ink); text-decoration:none; font-weight:500; }
+  .hero { display:grid; grid-template-columns: 1.1fr .9fr; gap:48px; padding:72px 48px; align-items:center; }
+  h1 { font-size:54px; line-height:1.05; margin:0 0 18px; }
+  p.lead { font-size:20px; line-height:1.5; color:#4b5563; max-width:560px; }
+  .btn { display:inline-block; margin-top:20px; padding:14px 26px; background:var(--green); color:#fff; border-radius:999px; text-decoration:none; font-weight:600; }
+  .bags { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .bag { background:#fff; border-radius:18px; padding:22px 16px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+  .bag .art { height:120px; border-radius:12px; margin-bottom:12px; }
+  .note { padding:0 48px 40px; color:#6b7280; font-size:14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Nimbus <span>Coffee Co.</span></div>
+  <nav><a href="#">Shop</a><a href="#">Subscriptions</a><a href="#">Tasting room</a><a href="#">Help</a></nav>
+</header>
+<section class="hero">
+  <div>
+    <h1>Fresh-roasted coffee, shipped to your door.</h1>
+    <p class="lead">Whole-bean coffee roasted to order. Questions about shipping, returns, or your order? Click the chat bubble in the corner.</p>
+    <a class="btn" href="#">Shop coffee</a>
+  </div>
+  <div class="bags">
+    <div class="bag"><div class="art" style="background:#c9a27e"></div><b>House Blend</b><br>12 oz</div>
+    <div class="bag"><div class="art" style="background:#3d4b5c"></div><b>Night Owl Decaf</b><br>12 oz</div>
+    <div class="bag"><div class="art" style="background:#9c6b3f"></div><b>Ethiopia Guji</b><br>12 oz</div>
+  </div>
+</section>
+<p class="note">Nimbus Coffee Co. is a fictional shop made for a tutorial.</p>
+
+<!-- Dify chat bubble. Copy your own snippet from: your app > Access Point > Embed Into Site. -->
+<script>
+  window.difyChatbotConfig = {
+    token: 'YOUR_TOKEN',              // the app token shown under Embed Into Site (keep it out of git)
+    baseUrl: 'http://localhost',      // your Dify address (copy it from the Embed Into Site snippet)
+  }
+</script>
+<script src="http://localhost/embed.min.js" id="YOUR_TOKEN" defer></script>
+<style>
+  #dify-chatbot-bubble-button { background-color: #2f6b3f !important; }
+  #dify-chatbot-bubble-window { width: 24rem !important; height: 40rem !important; }
+</style>
+</body>
+</html>

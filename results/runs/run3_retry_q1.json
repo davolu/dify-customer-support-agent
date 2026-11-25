@@ -1,0 +1,21 @@
+[
+  {
+    "question": "What's your return policy on unopened bags?",
+    "answer": "Unopened bags can be returned within 14 days of delivery for a full refund or a replacement. To start a return, just email us at support@nimbus-coffee.example with your order number.",
+    "path": [
+      "User Input",
+      "Question Classifier",
+      "Knowledge Retrieval",
+      "Answer from FAQ",
+      "Answer from FAQ (free backup model)",
+      "Answer (backup)"
+    ],
+    "error": [
+      "Answer from FAQ",
+      "Unknown error"
+    ],
+    "elapsed_s": 8.71,
+    "total_tokens": 1424,
+    "status": "partial-succeeded"
+  }
+]
